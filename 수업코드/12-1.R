@@ -1,0 +1,7 @@
+data = read.csv("C:\\Users\\ji040\\OneDrive\\바탕 화면\\자료\\class_scores.csv", stringsAsFactors = TRUE)
+anova_result <- aov(Score ~ Class, data = data)
+summary(anova_result)
+# 6.9e-13 (대립가설 채택/평균의 차이가 적어도 하나는 있다)
+library(multcomp)
+tukey_result <- glht(anova_result, linfct = mcp(Class = "Tukey"))
+summary(tukey_result)
